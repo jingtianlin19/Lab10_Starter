@@ -2,6 +2,13 @@
 <html lang="en">
 
 <head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PP67RJJ');</script>
+  <!-- End Google Tag Manager -->
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,26 +22,40 @@
   <link rel="stylesheet" href="assets/styles/global.css" />
   <script src="assets/scripts/partyHorn.js" type="module"></script>
   <script src="https://unpkg.com/launchdarkly-js-client-sdk@2"></script>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N516BDLP5C"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-N516BDLP5C');
+  </script>
 </head>
 
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PP67RJJ"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
   <script>
     var user = {
       key: Math.random(),
-    };  
+    };
     var ldclient = LDClient.initialize('61a42ab3a8e6530f447d9513', user);
-  
+
     function render() {
       var shouldShow = ldclient.variation('blue-background', false);
       if (shouldShow) {
         document.body.classList.add('blue');
       }
     }
-  
+
     ldclient.on('ready', render);
     ldclient.on('change', render);
   </script>
-  
+
   <header>
     <nav>
       <a href="speechSynth.html" title="Go to speech synthesizer">Speech Synthesizer</a>
