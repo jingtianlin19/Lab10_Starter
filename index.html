@@ -14,9 +14,28 @@
   <!-- Main Stylesheet & Scripts -->
   <link rel="stylesheet" href="assets/styles/global.css" />
   <script src="assets/scripts/partyHorn.js" type="module"></script>
+  <script src="https://unpkg.com/launchdarkly-js-client-sdk@2"></script>
 </head>
 
 <body>
+  <script>
+    var user = {
+      key: Math.random(),
+    };  
+    var ldclient = LDClient.initialize('61a42ab3a8e6530f447d9513', user);
+  
+    function render() {
+      var shouldShow = ldclient.variation('blue-background', false);
+      var label = (shouldShow ? 'Showing' : 'Not showing') + ' your feature to ' + user.key;
+      if (shouldShow) {
+        document.body.classList.add('blue');
+      }
+    }
+  
+    ldclient.on('ready', render);
+    ldclient.on('change', render);
+  </script>
+  
   <header>
     <nav>
       <a href="speechSynth.html" title="Go to speech synthesizer">Speech Synthesizer</a>
